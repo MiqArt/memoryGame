@@ -8,7 +8,7 @@ function App() {
   const [boxClass, setBoxClass] = useState({}); // index: "className"
   const [firstClickedBox, setFirstClickedBox] = useState({name: false, index: false});
   const [clickable, setClickable] = useState(true);
-  const [showAlert, setShowAlert] = useState(false);
+  const [showAlert, setShowAlert] = useState({show: false, status: ""});
   
   const onBoxClick = (name, index) => {
     if(!firstClickedBox.name) {                // FIRST CLICKED BOX
@@ -23,7 +23,10 @@ function App() {
       setTimeout(() => {
         setBoxClass({...boxClass, [index]: "success", [firstClickedBox.index]: "success"});
         if(steps.success === 7) {
-          setShowAlert(true)
+          setShowAlert({show: true, status: "success"})
+        }
+        else if(steps.steps === 3) {     
+          setShowAlert({show: true, status: "danger"})
         }
         setClickable(true)
       }, 600)    
@@ -71,8 +74,10 @@ function App() {
 
   return (
     <div className="App container d-flex flex-column justify-content-center align-items-center">
-      <button onClick={restartTheGame} type="button" className="btn btn-primary">RESTART</button>
-      <div>Steps: {steps.steps}</div>
+      <div className="panel">
+        <div>Steps: {steps.steps}</div>
+        <button onClick={restartTheGame} type="button" className="btn btn-outline-dark">RESTART</button>
+      </div>
       <div className="maincontainer d-flex">
         <div className="row w-100 m-0">
         {boxArr.map((name, index) => {
@@ -86,7 +91,7 @@ function App() {
         })}
         </div>
       </div>
-      {showAlert && <Modal restartTheGame={restartTheGame} onShow={false}/>}
+      {showAlert.show && <Modal status={showAlert.status} result={steps.steps} restartTheGame={restartTheGame}/>}
     </div>
   );
 }

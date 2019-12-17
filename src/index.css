@@ -27,6 +27,26 @@ img {
   border-radius: 5px;
 }
 
+.steps {
+  padding: 5px;
+  background-color: blue;
+  border: ridge;
+  border-radius: 2px;
+}
+
+.panel {
+  display: flex;
+  width: 100%;
+  max-width: 450px;
+  justify-content: space-around;
+  align-items: center;
+  margin-bottom: 10px;
+  box-shadow: 3px 3px 7px 1px;
+  border-radius: 7px;
+  padding: 5px;
+  background-color: rgba(255, 217, 0, 0.541);
+}
+
 .maincontainer {
   position: relative;
   flex-wrap: wrap;
@@ -59,7 +79,6 @@ img {
 
 .success {
   transform: rotateY(90deg);
-  /* opacity: 0; */
 }
 
 .thefront {
@@ -80,8 +99,6 @@ img {
   max-width: 100px;
   backface-visibility: hidden;
   transform: rotateY(180deg);
-  /* background-size: contain !important;
-  background-repeat: no-repeat !important; */
 }
 
 .myModalBack {
@@ -96,7 +113,7 @@ img {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 100%;
-  max-width: 500px;
+  width: 75%;
+  max-width: 400px;
   transform: translate(-50%, -50%);
 }
