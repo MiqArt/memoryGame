@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: url('/bgimg.jpg');
+  background: url('./images/bgimg.jpg');
   background-size: 100vw 100vh;
   user-select: none;
 }
@@ -49,9 +49,9 @@ img {
   cursor: pointer;
 }
 
-.thecard:hover {
+/* .thecard:hover {
   box-shadow: 0px 0px 15px 1px black;
-}
+} */
 
 .rotate {
   transform: rotateY(180deg);

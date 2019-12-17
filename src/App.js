@@ -77,8 +77,8 @@ function App() {
         <div className="row w-100 m-0">
         {boxArr.map((name, index) => {
           return <Box
-          key={index}
-          onClick={clickable ? onBoxClick.bind(null, name, index) : () => {}} 
+          key={`box-${index}`}
+          onClick={clickable && (() => onBoxClick(name, index))} 
           alt={name} 
           boxClass={boxClass[index]}
           color={{c1: getRandomColor(), c2: getRandomColor()}}
