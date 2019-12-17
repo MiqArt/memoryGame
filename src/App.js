@@ -5,7 +5,7 @@ import Modal from './components/Modal';
 function App() {
   const [boxArr, setBoxArr] = useState([]);
   const [steps, setSteps] = useState({steps: 0, success: 0});
-  const [boxClass, setBoxClass] = useState({}); // index: "className"
+  const [boxClass, setBoxClass] = useState({});
   const [firstClickedBox, setFirstClickedBox] = useState({name: false, index: false});
   const [clickable, setClickable] = useState(true);
   const [showAlert, setShowAlert] = useState({show: false, status: ""});
@@ -25,7 +25,7 @@ function App() {
         if(steps.success === 7) {
           setShowAlert({show: true, status: "success"})
         }
-        else if(steps.steps === 3) {     
+        else if(steps.steps > 23) {     
           setShowAlert({show: true, status: "danger"})
         }
         setClickable(true)
@@ -38,6 +38,9 @@ function App() {
       setFirstClickedBox({name: false, index: false});
       setTimeout(() => {
         setBoxClass({...boxClass, [index]: "", [firstClickedBox.index]: ""});
+        if(steps.steps > 23) {
+          setShowAlert({show: true, status: "danger"});
+        } 
         setClickable(true)
       }, 600)
     }
@@ -61,22 +64,18 @@ function App() {
     return color;
   }
 
-  // const getRandomColor = () => {
-  //   let color = "#"+((1<<24)*Math.random()|0).toString(16)+77;
-  //   return color;
-  // }
-
   useEffect(() => {
     const startArr = [1,2,3,4,5,6,7,8,1,2,3,4,5,6,7,8];
-    const shuffleArr = sortRandomly(startArr)
-    setBoxArr(shuffleArr)
+    const shuffleArr = sortRandomly(startArr);
+    setBoxArr(shuffleArr);
   }, [])
 
   return (
     <div className="App container d-flex flex-column justify-content-center align-items-center">
       <div className="panel">
         <div>Steps: {steps.steps}</div>
-        <button onClick={restartTheGame} type="button" className="btn btn-outline-dark">RESTART</button>
+        <p className="font-weight-bold mb-0">Memory Game</p>
+        <button onClick={restartTheGame} type="button" className="btn btn-dark">RESTART</button>
       </div>
       <div className="maincontainer d-flex">
         <div className="row w-100 m-0">
